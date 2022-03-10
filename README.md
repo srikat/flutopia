@@ -16,7 +16,7 @@ The benefit is automatic fluid responsiveness without adding any further CSS or 
 
 ## Examples
 
-1. Adding a class of `space-l` for a Section or a Div will add large vertical space between the children (top margin excerpt the first child) of that element.
+1. Adding a class of `space-l` for a Section or a Div will add large vertical space between the children (top margin except the first child) of that element.
 2. Adding a class of `mt-xl` for an element will add an extra large top margin for it.
 3. Adding a class of `px-s` for an element will add small left and right padding for it.
 
