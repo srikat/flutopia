@@ -29,6 +29,23 @@ if ( ! defined( 'WPINC' ) ) {
 
 add_action( 'wp_enqueue_scripts', 'flutopia_enqueue_files' );
 function flutopia_enqueue_files() {
-	wp_enqueue_style( 'utopia', plugin_dir_url( __FILE__ ) . 'assets/css/utopia.css' );
-	wp_enqueue_style( 'flutopia', plugin_dir_url( __FILE__ ) . 'assets/css/flutopia.css' );
+	if ( ! class_exists( 'CT_Component' ) ) { // if Oxygen is not active
+		wp_enqueue_style( 'utopia', plugin_dir_url( __FILE__ ) . 'assets/css/utopia.css' );
+		wp_enqueue_style( 'flutopia', plugin_dir_url( __FILE__ ) . 'assets/css/flutopia.css' );
+	}
+}
+
+// 1000000 priority so it is executed after all Oxygen's styles
+add_action( 'wp_head', 'flutopia_enqueue_css_after_oxygens', 1000000 );
+function flutopia_enqueue_css_after_oxygens() {
+	// if Oxygen is not active, abort.
+	if ( ! class_exists( 'CT_Component' ) ) {
+		return;
+	}
+
+	$styles = new WP_Styles;
+	$styles->add( 'utopia', plugin_dir_url( __FILE__ ) . 'assets/css/utopia.css' );
+	$styles->add( 'flutopia', plugin_dir_url( __FILE__ ) . 'assets/css/flutopia.css' );
+	$styles->enqueue( array ( 'utopia', 'flutopia' ) );
+	$styles->do_items();
 }

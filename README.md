@@ -152,7 +152,7 @@ If you wish to customize these
 
 1. Visit the [fluid type scale calculator](https://utopia.fyi/type/calculator/?c=320,16,1.2,1140,18,1.25,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l)
 2. Change any/all of width, font-size and type scale at min viewport and max viewport
-3. Click `+` to add a scale step at the top so that there are a total of 6 steps
+3. Ensure that there are 6 scale steps. If not click `+` to add one at the top
 4. Copy the generated CSS and replace the corresponding CSS in the plugin's `assets/css/utopia.css` under the `Fluid type scale calculator` heading.
 
 ### Customizing space values
